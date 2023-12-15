@@ -21,8 +21,7 @@ function inicio(){
 
 async function comprarArticuloUno(){
 	const response = await fetch("js/data.json");
-	datos = await response.json()
-	.then(document.getElementById('carouselArticle').innerHTML = "<img src='https://shorturl.at/gtLS4' id='loadingImage'/> <p>Loading</p>");
+	datos = await response.json();
 	let articulo = new Articulo(datos[0].titulo, datos[0].precio);
 	carrito.agregarACarrito(articulo);
 	cargarDatosEnTabla(JSON.parse(localStorage.getItem('carrito')));
@@ -30,6 +29,12 @@ async function comprarArticuloUno(){
 	document.getElementById("compras").innerHTML = comprados;
 }
 
+async function run() {
+  await comprarArticuloUno();
+  document.getElementById('carouselArticle').innerHTML = "<img src='https://shorturl.at/gtLS4' id='loadingImage'/> <p>Loading</p>";
+}
+// this runs first
+run();
 
 async function comprarArticuloDos(){
 	const response = await fetch("js/data.json");
