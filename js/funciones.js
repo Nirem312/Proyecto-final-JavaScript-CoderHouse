@@ -21,13 +21,15 @@ function inicio(){
 
 async function comprarArticuloUno(){
 	const response = await fetch("js/data.json");
-	datos = await response.json();
+	datos = await response.json()
+	.then(document.getElementById('carouselArticle').innerHTML = "<img src='https://shorturl.at/gtLS4' id='loadingImage'/> <p>Loading</p>");
 	let articulo = new Articulo(datos[0].titulo, datos[0].precio);
 	carrito.agregarACarrito(articulo);
 	cargarDatosEnTabla(JSON.parse(localStorage.getItem('carrito')));
 	comprados = JSON.parse(localStorage.getItem('carrito')).length;
 	document.getElementById("compras").innerHTML = comprados;
 }
+
 
 async function comprarArticuloDos(){
 	const response = await fetch("js/data.json");
