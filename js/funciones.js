@@ -29,13 +29,6 @@ async function comprarArticuloUno(){
 	document.getElementById("compras").innerHTML = comprados;
 }
 
-async function run() {
-  await comprarArticuloUno();
-  document.getElementById('carouselArticle').innerHTML = "<img src='https://shorturl.at/gtLS4' id='loadingImage'/> <p>Loading</p>";
-}
-// this runs first
-run();
-
 async function comprarArticuloDos(){
 	const response = await fetch("js/data.json");
 	datos = await response.json();
